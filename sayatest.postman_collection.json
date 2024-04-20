@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "7eed0abd-387d-4ea7-ba9c-0a5974965aa4",
+		"name": "sayatest",
+		"description": "test project for saya skycraft",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8338223"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "arensama",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pp1@asswotd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/signin",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "arensama43",
+									"description": "must be unique and at most 20 characters long and not null",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pp1@asswotd",
+									"description": "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character (!@#$%^&*()_+).",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "aren@aren.com23",
+									"description": "must be unique at most 100 characters long and in valid shape",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "amir",
+									"description": "Name must be at most 50 characters long",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "09151234567",
+									"description": "must have 11 digits and be in valid shape",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/signup",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "find all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/user?ageMin=24&sortBy=age&sortOrder=1&page=1&limit=10",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "ageMin",
+									"value": "24",
+									"description": "query for age"
+								},
+								{
+									"key": "sortBy",
+									"value": "age",
+									"description": "select one of the fields in the user model"
+								},
+								{
+									"key": "sortOrder",
+									"value": "1",
+									"description": "1 for ASC and -1 for DESC"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "page option for pagination"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "limit option for pagination"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/user/66222e8a8e1129cd14fbdac0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"66222e8a8e1129cd14fbdac0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ali",
+									"description": "Name must be at most 50 characters long",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "09151234567",
+									"description": "must have 11 digits and be in valid shape",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user@gmail.com2354",
+									"description": "must be unique at most 100 characters long and in valid shape",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pp1@asswotd",
+									"description": "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character (!@#$%^&*()_+).",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "arensama",
+									"description": "must be unique and at most 20 characters long and not null",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "23",
+									"description": "must be a number between 18 and 120",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"description": "choose one of these  : [\"male\", \"female\", \"other\"]",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "212 olive street",
+									"description": "must be at most 200 characters long",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "some bio",
+									"description": "Bio can only contain letters, dots, commas, and spaces.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/user",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ali2",
+									"description": "Name must be at most 50 characters long",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "09151234567",
+									"description": "must have 11 digits and be in valid shape",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "user@gmail.com2354",
+									"description": "must be at most 100 characters long and in valid shape",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Pp1@asswotd",
+									"description": "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character (!@#$%^&*()_+).",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "arensama",
+									"description": "must be at most 20 characters long and not null",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "age",
+									"value": "23",
+									"description": "must be a number between 18 and 120",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"description": "choose one of these  : [\"male\", \"female\", \"other\"]",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "212 olive street",
+									"description": "must be at most 200 characters long",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "some bio",
+									"description": "Bio can only contain letters, dots, commas, and spaces.",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/user/66222e8a8e1129cd14fbdac0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"66222e8a8e1129cd14fbdac0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/user/66222e8a8e1129cd14fbdac0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"66222e8a8e1129cd14fbdac0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIyYTE3YTU5YWViMzNmOTQ2OWEzM2EiLCJpYXQiOjE3MTM1ODExNjIsImV4cCI6MTcxMzU4NDc2Mn0.vbugKtuauj3biXw4U8AFwEy7DcWXieOaB4-KLgaeq2w",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "localhost:4000",
+			"type": "string"
+		}
+	]
+}
