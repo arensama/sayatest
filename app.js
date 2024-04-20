@@ -3,12 +3,26 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
+var helmet = require("helmet");
+var cors = require("cors");
 var userRouter = require("./routes/user.router");
 var authRouter = require("./routes/auth.router");
 var checkToken = require("./middlewares/checkToken");
 var app = express();
+// Use Helmet!
+app.use(helmet());
+const whitelist = ["http://example1.com", "http://example2.com"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
 
+// app.use(cors(corsOptions));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");

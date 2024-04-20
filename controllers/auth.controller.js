@@ -6,11 +6,18 @@ const bodyParser = require("body-parser");
 const signUp = async (req, res, next) => {
   try {
     let { name, username, email, password, phoneNumber } = req.body;
+    console.log("here error");
     password = await userHelper.hashPassword(password);
-    const user = await userController.FindUserByUsername(username);
+    console.log("here error2", username);
+
+    const user = await userModel.findOne({ username });
+    console.log("here error3", user);
+
     if (user) {
       return res.status(401).json({ error: "username already taken." });
     }
+    console.log("here error4");
+
     const newUser = await userModel.create({
       name,
       username,
@@ -18,6 +25,7 @@ const signUp = async (req, res, next) => {
       password,
       phoneNumber,
     });
+    console.log("here error5");
 
     let token = await jwt
       .sign(
@@ -28,6 +36,7 @@ const signUp = async (req, res, next) => {
         { expiresIn: "1h" }
       )
       .toString();
+    console.log("here error6");
 
     res.status(200).json({ message: "User signed up successfully", token });
   } catch (error) {
@@ -47,7 +56,8 @@ const signUp = async (req, res, next) => {
 const signIn = async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    const user = await userController.FindUserByUsername(username);
+    const user = await userModel.findOne({ username });
+    console.log("here1", user);
     // Check if user exists
     if (!user) {
       return res.status(401).json({ error: "User not found" });
@@ -70,7 +80,7 @@ const signIn = async (req, res, next) => {
 
     res.status(200).json({ message: "User signed in successfully", token });
   } catch (error) {
-    console.log("error", error.message);
+    console.log("error in signin", error.message);
     res.status(500).json({ error: "Internal server error" });
   }
 };
