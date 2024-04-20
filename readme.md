@@ -1,6 +1,6 @@
-# Your App Name
+# RESTFUL API WITH EXPRESS AND MONGO
 
-[Description of your app]
+simple crud for users with authentication and authorization
 
 ## Installation
 
